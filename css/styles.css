@@ -1,0 +1,584 @@
+:root {
+    --primary-color: #0779e4;
+    --secondary-color: #333;
+    --light-color: #f4f4f4;
+    --dark-color: #666;
+    --cta-color: #25d366; /* WhatsApp color */
+    --cta-hover-color: #128c7e;
+    --overlay-color: rgba(0, 0, 0, 0.5);
+    --transparent-color: rgba(255, 255, 255, 0.8); /* Color para el fondo transparente */
+    --header-bg-color: #316fad; /* Nuevo color de fondo para el header */
+}
+
+body {
+   font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+
+/* ----------- header -------------  */
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Coloca el logo a la izquierda y el nav a la derecha */
+  width: 100%; /* Asegura que el header ocupe todo el ancho de la pantalla */
+  margin: auto;
+  background-color: var(--header-bg-color);
+  transition: background-color 0.3s ease; /* Suaviza el cambio de color de fondo */
+  position: fixed; /* Hace que el header permanezca fijo en la parte superior */
+  top: 0; /* Fija el header en la parte superior */
+  z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+}
+
+header.transparent {
+  background-color: var(--transparent-color); /* Fondo transparente al hacer scroll */
+}
+
+header.transparent nav ul li a {
+  color: var(--secondary-color); /* Cambia el color del texto */
+}
+
+header .logo-link {
+  display: block;
+}
+
+.header.sticky .logo {
+  height: 60px;
+}
+
+header  .logo {
+  width: 120px; /* Ajusta el tamaño del logo */
+  height: auto;
+}
+
+header nav {
+  flex-grow: 1; /* Asegura que el nav ocupe el espacio restante */
+  display: flex;
+  justify-content: flex-end; /* Alinea el nav a la derecha */
+  margin: 20px;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center; /* Asegura que los elementos del menú estén centrados verticalmente */
+}
+
+header nav ul li {
+  margin-left: 20px; /* Añade espacio entre los elementos del menú */
+}
+
+header nav ul li a{
+  color: var(--light-color);
+  text-decoration: none;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra de texto */
+  padding: 5px 20px;
+  transition: background 0.3s, color 0.3s;
+  
+}
+
+header nav ul li a:hover {
+  background: var(--primary-color);
+  border-radius: 5px;
+}
+
+/* Navegación responsiva */
+.nav-toggle {
+  font-size: 24px;
+  color: var(--light-color); /* Asegura que el icono de hamburguesa sea visible */
+  cursor: pointer;
+  display: none; /* Oculta el toggle de menú por defecto */
+}
+
+@media screen and (max-width: 768px) {
+
+  header {
+    justify-content: center; /* Centra el contenido en modo celular */
+  }
+
+  header .logo {
+    margin: 0 auto; /* Asegura que el logo esté centrado */
+  }
+
+  .nav-toggle {
+    position: absolute;
+    right: 40px; /* Coloca el icono de hamburguesa en la esquina derecha */
+    top: 15px;
+  }
+ 
+  header.transparent {
+    background-color: var(--header-bg-color); /* Mantén el fondo igual al hacer scroll en modo celular */
+    color: var(--light-color);
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  header .nav-toggle {
+      display: block;
+     
+      font-size: 24px;
+      color: var(--light-color);
+      padding: 10px; /* Añade espacio al icono de hamburguesa */
+  }
+
+  header.transparent .nav-toggle {
+    color: var(--light-color); /* Cambia el color del icono de hamburguesa al hacer scroll */
+  }
+
+
+  header.transparent nav ul li a {
+    color: var(--light-color);
+  }
+
+
+
+  header nav ul {
+      display: none; /* Oculta el menú por defecto en pantallas pequeñas */
+      flex-direction: column;
+      width: 100%;
+      background-color: var(--header-bg-color);
+      position: absolute;
+      top: 60px; /* Ajusta la posición del menú debajo del header */
+      left: 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Añade una sombra para mejorar la visibilidad */
+  }
+
+  nav ul.open {
+      display: flex; /* Muestra el menú cuando se activa el toggle */
+  }
+
+  nav ul li {
+    margin: 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  header nav ul li a {
+    padding: 15px;
+    color: var(--light-color); /* Asegura que el color de las letras sea claro siempre */
+    border-bottom: 1px solid var(--dark-color); /* Añade separación entre elementos del menú */
+  }
+
+  nav ul li a:hover {
+    background: var(--cta-hover-color); /* Cambia el color de fondo al hacer hover */
+  }
+
+}
+
+
+/* Añadir margen superior al contenido principal */
+main {
+  margin-top: 60px; /* Ajusta este valor según la altura de tu header */
+}
+
+/* hero */
+.hero {
+    position: relative;
+    height: 100vh;
+ 
+    text-align: center;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    
+    flex-direction: column;
+    margin-top: 70px;
+  }
+  
+.hero .carousel img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+  
+.hero .carousel-slide {
+    position: relative;
+}
+  
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--overlay-color);
+}
+  
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+  
+.hero h1 {
+    font-size: 3em;
+    margin: 0;
+}
+  
+.hero p {
+    font-size: 1.2em;
+}
+
+@media screen and (max-width: 768px) {
+  .hero h1 {
+      font-size: 2em;
+  }
+
+  .hero p {
+      font-size: 1em;
+  }
+}
+
+/* sections  */
+.nosotros, .servicios, .clientes, .downloads, .contacto {
+  padding: 60px 0;
+  background: var(--light-color);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--secondary-color);
+}
+
+
+
+/* nosotros  */
+.nosotros {
+  background-color: #f9f9f9; /* Fondo ligeramente gris */
+  padding: 80px 20px;
+  border-radius: 10px; /* Bordes suaves */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+}
+
+.nosotros h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: var(--secondary-color);
+}
+
+
+.nosotros .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.nosotros .container > div {
+  flex: 1 1 45%; /* Dos columnas de aproximadamente 45% del ancho */
+  margin-bottom: 20px;
+}
+
+.mision-vision h3::before {
+  content: "\f00c"; /* Icono FontAwesome */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 10px;
+}
+
+.mision-vision p {
+  line-height: 1.6; /* Mejora la legibilidad */
+  color: var(--dark-color);
+}
+
+
+.mision-vision {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+
+  .nosotros .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .mision-vision {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+
+  .mision-vision > div {
+    flex: 1 1 100%; /* Cada sección ocupa el 100% del ancho */
+    margin-bottom: 20px;
+    text-align: center; /* Alinea el texto al centro */
+  }
+}
+
+/* Servicios */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.service-item {
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.service-item img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+/* Proyectos */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.project-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  width: 100%;
+  max-height: 250px; /* Ajusta la altura máxima de las imágenes */
+}
+
+.project-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsión */
+  transition: transform 0.3s ease;
+}
+
+.project-overlay {
+  position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    color: #fff;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+.project-item:hover .project-overlay {
+  opacity: 0.9; /* Muestra la capa con el filtro transparente */
+}
+
+.project-item:hover img {
+  transform: scale(1.1); /* Aplica un zoom a la imagen */
+}
+
+
+
+/* clientes  */
+
+.clientes {
+  background-color: #ffffff; /* Fondo blanco */
+  padding: 60px 0; /* Espacio alrededor del contenido */
+}
+
+.clientes-carousel {
+  display: flex;
+  overflow: hidden;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.clientes-item {
+  flex: 0 0 20%;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s, filter 0.3s; /* Añade la transición del filtro */
+    filter: grayscale(100%); /* Inicialmente desaturado */
+    border: 2px solid #ccc; /* Añade un borde alrededor de cada logo */
+    padding: 10px; /* Espacio interno para el logo */
+    background-color: #fff; /* Fondo blanco para cada logo */
+    border-radius: 5px; /* Esquinas redondeadas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.clientes-item:hover {
+  transform: scale(1.07); /* Efecto de zoom al pasar el mouse */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el mouse */
+  filter: grayscale(0%); /* Activa el color al pasar el mouse */
+}
+
+.clientes-item img {
+  max-width: 100px;
+  max-height: 80px;
+}
+
+@media screen and (max-width: 768px) {
+  .clientes-item {
+      flex: 0 0 45%;
+      margin-bottom: 20px;
+  }
+}
+
+/* contacto  */
+.contacto {
+  padding: 60px 0;
+  background-color: var(--light-color);
+}
+
+.contact-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.contact-item i {
+  margin-right: 10px;
+  color: var(--primary-color);
+}
+
+.contact-content {
+  display: flex;
+  flex-direction: row; /* Alinea los elementos en fila */
+  justify-content: space-between; /* Distribuye el espacio equitativamente */
+  align-items: flex-start; /* Alinea los elementos en la parte superior */
+}
+
+.contact-form {
+  flex: 1;
+  margin-right: 20px;
+  max-width: 600px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .form-group {
+  margin-bottom: 15px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--dark-color);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--dark-color);
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.contact-form .btn-submit {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form .btn-submit:hover {
+  background-color: var(--cta-hover-color);
+}
+
+
+
+
+/* Footer */
+footer {
+  background-color: var(--header-bg-color); /* Utiliza el mismo color de fondo que el header */
+  color: var(--light-color);
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.footer-info .social a {
+  margin: 0 10px;
+  color: var(--light-color);
+  text-decoration: none;
+  font-size: 1.2em;
+  transition: color 0.3s;
+}
+
+.footer-info .social a:hover {
+  color: var(--primary-color);
+}
+
+.footer-info .hours p {
+  margin: 5px 0;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-info {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .footer-info .social, .footer-info .hours {
+      margin-bottom: 15px;
+  }
+}
