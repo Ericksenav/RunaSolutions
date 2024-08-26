@@ -1,13 +1,20 @@
 :root {
     --primary-color: #0779e4;
     --secondary-color: #333;
+    --Runa1: #316fad;
+    --Runa2: #128c7e;
     --light-color: #f4f4f4;
     --dark-color: #666;
     --cta-color: #25d366; /* WhatsApp color */
     --cta-hover-color: #128c7e;
     --overlay-color: rgba(0, 0, 0, 0.5);
     --transparent-color: rgba(255, 255, 255, 0.8); /* Color para el fondo transparente */
-    --header-bg-color: #316fad; /* Nuevo color de fondo para el header */
+    
+    --gradiente: linear-gradient(90deg, var(--Runa2) 20%, var(--Runa1) 90%);
+
+    
+    --gradient-1: linear-gradient(90deg, var(--header-bg-color) 0, var(--cta-hover-color) 51%, var(--primary-color));
+    --gradient-2: linear-gradient(90deg, var(--razzmatazz), var(--rajah));
 }
 
 body {
@@ -27,20 +34,36 @@ header{
   align-items: center;
   justify-content: space-between; /* Coloca el logo a la izquierda y el nav a la derecha */
   width: 100%; /* Asegura que el header ocupe todo el ancho de la pantalla */
-  margin: auto;
-  background-color: var(--header-bg-color);
+  margin: 0; /* Centra el header */
+  background-image: var(--gradiente);
   transition: background-color 0.3s ease; /* Suaviza el cambio de color de fondo */
   position: fixed; /* Hace que el header permanezca fijo en la parte superior */
   top: 0; /* Fija el header en la parte superior */
   z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+  padding: 0; /* Reduce el padding para hacer el navbar más angosto */
+  height: 80px; /* Controla la altura del navbar */
+  overflow: hidden; /* Evita que el contenido se desborde del header */
+  left: 0;
+  right: 0;
 }
 
 header.transparent {
-  background-color: var(--transparent-color); /* Fondo transparente al hacer scroll */
+  background-image: none; /* Fondo transparente al hacer scroll */
+  background-color: var(--transparent-color);
 }
 
 header.transparent nav ul li a {
   color: var(--secondary-color); /* Cambia el color del texto */
+}
+
+header.transparent .logo {
+  width: 150px; /* Ajusta este valor según el tamaño deseado */
+  height: auto;
+}
+
+header.transparent .logo-link {
+  margin-left: 40px; /* Ajusta el valor según lo que necesites */
+  transition: margin-left 0.4s ease; /* Para una transición suave */
 }
 
 header .logo-link {
@@ -52,7 +75,7 @@ header .logo-link {
 }
 
 header  .logo {
-  width: 120px; /* Ajusta el tamaño del logo */
+  width: 200px; /* Ajusta el tamaño del logo */
   height: auto;
 }
 
@@ -60,7 +83,8 @@ header nav {
   flex-grow: 1; /* Asegura que el nav ocupe el espacio restante */
   display: flex;
   justify-content: flex-end; /* Alinea el nav a la derecha */
-  margin: 20px;
+  margin: 0;
+  padding: 0;
 }
 
 header nav ul {
@@ -79,7 +103,7 @@ header nav ul li a{
   color: var(--light-color);
   text-decoration: none;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra de texto */
-  padding: 5px 20px;
+  padding: 5px 10px;
   transition: background 0.3s, color 0.3s;
   
 }
@@ -114,11 +138,14 @@ header nav ul li a:hover {
   }
  
   header.transparent {
-    background-color: var(--header-bg-color); /* Mantén el fondo igual al hacer scroll en modo celular */
+    
     color: var(--light-color);
+    background-image: none; /* Fondo transparente al hacer scroll */
+    background-color: var(--transparent-color); /* Mantén el fondo igual al hacer scroll en modo celular */
   }
 
   nav {
+    justify-content: center; /* Centra el nav en dispositivos móviles */
     width: 100%;
   }
 
@@ -442,6 +469,7 @@ h2 {
   }
 }
 
+
 /* contacto  */
 .contacto {
   padding: 60px 0;
@@ -525,12 +553,34 @@ h2 {
   background-color: var(--cta-hover-color);
 }
 
+@media screen and (max-width: 768px) {
+  .contact-content {
+      flex-direction: column; /* Cambia la dirección de los elementos a columna */
+      align-items: center; /* Centra los elementos horizontalmente */
+      text-align: center; /* Centra el texto dentro de los elementos */
+  }
+
+  .contact-form, .contact-details {
+      margin: 0; /* Elimina el margen para que ocupen todo el ancho */
+      width: 100%; /* Asegura que cada sección ocupe el 100% del ancho */
+  }
+
+  .contact-form {
+      margin-bottom: 20px; /* Añade espacio entre el formulario y los detalles de contacto */
+  }
+
+  .contact-item {
+      justify-content: center; /* Centra los iconos y el texto */
+  }
+}
+
+
 
 
 
 /* Footer */
 footer {
-  background-color: var(--header-bg-color); /* Utiliza el mismo color de fondo que el header */
+  background-image: var(--gradiente);
   color: var(--light-color);
   padding: 20px 0;
   text-align: center;

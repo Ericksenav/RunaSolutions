@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', function() {
         if (window.scrollY > 100) {
             header.classList.add('transparent');
-            logo.src = 'assets/img/logo.png'; // Cambia a logo claro
+            logo.src = 'assets/img/logo2.jpg'; // Cambia a logo claro
         } else {
             header.classList.remove('transparent');
-            logo.src = 'assets/img/logo-dark.jpg'; // Cambia a logo oscuro
+            logo.src = 'assets/img/logo-dark.png'; // Cambia a logo oscuro
         }
     });
   
